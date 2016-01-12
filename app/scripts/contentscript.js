@@ -1,17 +1,17 @@
 'use strict';
 
-console.log('\'Allo \'Allo! Content script');
-var timer;
+var timer,
+    pause = 5000;
 
+// The main program loop
 window.onscroll = function () {
+
     if (timer) {
         window.clearTimeout(timer);
-        console.log('clearing!');
     }
 
     timer = window.setTimeout(function () {
-        // actual callback
-        console.log('Firing!');
-    }, 1000);
+        chrome.runtime.sendMessage({ scrollY: window.scrollY });
+    }, pause);
 };
 //# sourceMappingURL=contentscript.js.map
