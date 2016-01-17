@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 var timer,
     pause = 5000;
 
@@ -13,6 +11,6 @@ window.onscroll = function() {
     }
 
     timer = window.setTimeout(function() {
-        chrome.runtime.sendMessage({scrollY: window.scrollY});
+        chrome.runtime.sendMessage({ scrollY: window.scrollY, url: window.location.href });
     }, pause);
 };
